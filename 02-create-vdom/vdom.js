@@ -31,7 +31,7 @@ function createVdom(tag, data, children) {
     } else {
         // 文本
         childrenFlag = childrenType.SINGLE;
-        children = createTextNode();
+        children = createTextNode(children + '');
     }
 
 
@@ -47,7 +47,7 @@ function createVdom(tag, data, children) {
     }
 }
 
-function createTextNode() {
+function createTextNode(text) {
     return {
         flag: vnodeType.TEXT,
         tag: null,
