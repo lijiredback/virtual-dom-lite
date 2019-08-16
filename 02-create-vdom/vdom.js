@@ -1,5 +1,5 @@
 // 是一个 HTML 标签，还是一个 TEXT 文本？
-const flagType = {
+const vnodeType = {
     HTML: 'HTML',
     TEXT: 'TEXT'
 };
@@ -16,9 +16,9 @@ function createVdom(tag, data, children) {
     let flag;
     if (typeof tag === 'string') {
         // HTML 标签
-        flag = flagType.HTML;
+        flag = vnodeType.HTML;
     } else {
-        flag = flagType.TEXT;
+        flag = vnodeType.TEXT;
     }
 
     let childrenFlag;
@@ -49,9 +49,10 @@ function createVdom(tag, data, children) {
 
 function createTextNode() {
     return {
+        flag: vnodeType.TEXT,
         tag: null,
         data: null,
-        children: null,
-        childrenFlag: childrenType.SINGLE
+        children: text,
+        childrenFlag: childrenType.EMPTY // 文本标签没有子元素
     };
 }
