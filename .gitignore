@@ -1,3 +1,4 @@
 node_modules
-.cahce
+.cache
 dist
+.DS_Store
