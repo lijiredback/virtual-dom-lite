@@ -11,7 +11,7 @@
 
 ```
 const vdom = {
-    tag: 'div',
+    tagName: 'div',
     data: { id: 'app' },
     chilren: [
         {
@@ -24,31 +24,7 @@ const vdom = {
 ```
 
 ### 02-How to create a Virtual DOM
-file: 02-create-vdom
 
-```
-{
-     "flag": "HTML",
-     "tag": "div",
-     "data": {
-          "id": "app"
-     },
-     "children": [
-          {
-               "flag": "HTML",
-               "tag": "span",
-               "data": {
-                    "class": "word"
-               },
-               "children": [
-                    "hello"
-               ],
-               "childrenFlag": "MULTIPLE"
-          }
-     ],
-     "childrenFlag": "MULTIPLE"
-}
-```
 
 
 ### 03-How to render a Virtual DOM
