@@ -1,12 +1,11 @@
-export default (tagName, { attrs = {} , children = [] } = {} ) => {
-    const vElem = Object.create(null);
+export default (tagName, { props = {}, children = [] } = {}) => {
+    const vElement = Object.create(null)
 
-    Object.assign(vElem, {
+    Object.assign(vElement, {
         tagName,
-        attrs,
-        children,
+        props,
+        children
     });
     
-    
-    return vElem;
+    return vElement;
 }

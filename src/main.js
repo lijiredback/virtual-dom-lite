@@ -1,20 +1,22 @@
-import createElement from './vdom/createElement';
-import render from './vdom/render';
+import h from './vdom/createElement'
+import render from './vdom/render'
+import mount from './vdom/mount'
 
-const vApp = createElement('div', {
-        attrs: {
-            id: 'app',
-        },
-        children: [
-            'hello world',
-            createElement('img', {
-                attrs: {
-                    src: 'https://media.giphy.com/media/cuPm4p4pClZVC/giphy.gif'
-                }
-            }),
-        ],
-} );
+const vApp = h('div', {
+    props: {
+        id: 'app'
+    },
+    children: [
+        h('h1', {
+            props: {
+                id: 'title'
+            },
+            children: ['hello world!']
+        })
+    ]
+})
 
+const $app = render(vApp)
+console.log($app)
 
-const $app = render(vApp);
-console.log($app);
+mount($app, document.getElementById('root'))

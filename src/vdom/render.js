@@ -1,45 +1,23 @@
-// vnode = {
-//     "tagName": "div",
-//     "attrs": {
-//          "id": "app"
-//     },
-//     "children": [
-//          {
-//               "tagName": "img",
-//               "attrs": {
-//                    "src": "https://media.giphy.com/media/cuPm4p4pClZVC/giphy.gif"
-//               },
-//               "children": []
-//          }
-//     ]
-// }
+const render = (vNode) => {
+    // 如果字符串，认为是文本节点，我们创建一个一个文本节点
+    if (typeof vNode === 'string') return document.createTextNode(vNode)
+    
+    // 其他情况默认为元素节点
 
-// 递归思想！！！
+    // 创建一个元素
+    const $el = document.createElement(vNode.tagName)
 
-const renderElem = ({tagName, attrs, children}) => {
-    // 创建元素
-    const $el = document.createElement(tagName);
-
-    // 给元素添加属性
-    for(const [key, value] of Object.entries(attrs)) {
-        $el.setAttribute(key, value);
+    // 添加虚拟 DOM 对象上所有的属性
+    for (const [key, value] of Object.entries(vNode.props)) {
+        $el.setAttribute(key, value)
     }
 
-    // 处理子元素
-    for(const child of children) {
-        $el.appendChild(render(child));
+    // 如果虚拟 DOM 上有子元素，则追加(这里其实有一个递归思想)
+    for (const child of vNode.children) {
+        $el.appendChild(render(child))
     }
 
-    // 返回
-    return $el;
+    return $el
 }
 
-const render = (vNode) => {
-    if (typeof vNode === 'string') {
-        return document.createTextNode(vNode);
-    }
-
-    return renderElem(vNode);
-};
-
-export default render;
+export default render
